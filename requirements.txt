@@ -1,15 +1,22 @@
+# Streamlit: A web app framework for machine learning and data science projects
+streamlit==1.21.0  # Stable version for building web applications
 
-tensorflow==2.16.2
-numpy>=1.26.0,<2.0.0
-pandas==1.5.3
-scikit-learn==1.2.0
-matplotlib==3.6.2
-seaborn==0.12.2
-beautifulsoup4==4.11.1
-requests==2.28.1
-flask==2.2.2
-streamlit==1.21.0
-torch==2.0.1+cpu
+# TensorFlow: A popular library for machine learning and deep learning
+tensorflow==2.16.0  # Use a stable version that's widely compatible
+
+# NumPy: A fundamental package for numerical computing in Python
+numpy==1.23.5  # Provides support for large, multi-dimensional arrays and matrices
+
+# Pandas: A library for data manipulation and analysis
+pandas==1.5.3  # Useful for handling and analyzing data in dataframes
+
+# Scikit-learn: A machine learning library for Python
+scikit-learn==1.2.0  # Provides simple and efficient tools for data mining and analysis
+
+# PyTorch: An open-source machine learning library based on the Torch library
+torch==2.0.1  # A flexible framework for deep learning tasks
+
+
 
 
 
