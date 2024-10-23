@@ -1,4 +1,5 @@
 # Remove specific versions to let pip install the latest versions
+IPython
 tensorflow
 streamlit
 
