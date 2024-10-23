@@ -1,3 +1,5 @@
-streamlit
-TTS
-torch
+streamlit==1.22.0
+tts==0.0.10  # Make sure to use a version compatible with your Python
+numpy==1.23.0  # Example of another common library, adjust as needed
+# Include any other libraries your app requires
+
