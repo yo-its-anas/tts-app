@@ -2,6 +2,7 @@
 IPython
 tensorflow
 streamlit
+TTS
 
 # Other required libraries
 numpy
