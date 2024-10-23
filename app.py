@@ -1,9 +1,7 @@
-# app.py
-
 import streamlit as st
 import logging
-import IPython.display as ipd
 from TTS.api import TTS
+from io import BytesIO
 
 # Set logging level to WARNING to suppress INFO and DEBUG logs
 logging.getLogger('TTS').setLevel(logging.WARNING)
@@ -20,14 +18,17 @@ text_input = st.text_area("Enter the text you want to convert to speech:",
 
 # Button to generate speech
 if st.button("Generate Speech"):
-    output_filename = "output.wav"
-    tts.tts_to_file(text=text_input, file_path=output_filename)
-    st.success(f"Audio saved as {output_filename}")
-    
+    # Generate speech and save it to a BytesIO object
+    output_buffer = BytesIO()
+    tts.tts_to_file(text=text_input, file_path=output_buffer)
+
+    # Rewind the buffer
+    output_buffer.seek(0)
+
     # Play the generated audio
-    audio_file = open(output_filename, 'rb')
-    audio_bytes = audio_file.read()
-    st.audio(audio_bytes, format='audio/wav')
+    st.audio(output_buffer, format='audio/wav')
+
+    st.success("Speech generated and played successfully!")
 
 # Run the app
 if __name__ == "__main__":
