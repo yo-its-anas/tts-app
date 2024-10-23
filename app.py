@@ -1,37 +1,20 @@
-import logging
 import streamlit as st
+from TTS.api import TTS
 
-# Logging configuration
-logging.basicConfig(level=logging.INFO)
-
-# Attempt to import necessary modules with error handling
+# Attempt to create a TTS instance
 try:
-    import numpy as np
-    import pandas as pd
-    import scikit-learn as skl
-    import torch
-    import TTS  # Importing TTS module
-except ImportError as e:
-    st.error(f"An error occurred while importing modules: {e}")
+    tts = TTS(model_name="tts_models/en/ljspeech/tacotron2")
+except Exception as e:
+    st.error(f"Error initializing TTS: {e}")
 
-# Function to load TTS model (example)
-def load_tts_model():
-    try:
-        # Load your TTS model here
-        # Example: model = TTS.load_model('your_model_path')
-        pass  # Replace with actual code to load TTS model
-    except Exception as e:
-        st.error(f"Error loading TTS model: {e}")
+# Streamlit app code
+st.title("Text to Speech App")
+text_input = st.text_area("Enter text to convert to speech:")
 
-def main():
-    st.title("Your Streamlit App Title")
-    st.write("Welcome to your Streamlit app!")
-
-    # Call the function to load the TTS model
-    load_tts_model()
-
-    # Add your app logic here
-    # Example: Upload file functionality, data display, model predictions, etc.
-
-if __name__ == "__main__":
-    main()
+if st.button("Convert to Speech"):
+    if text_input:
+        # Save the speech to a file
+        tts.tts_to_file(text=text_input, file_path="output.wav")
+        st.success("Speech has been saved to output.wav")
+    else:
+        st.error("Please enter some text.")
